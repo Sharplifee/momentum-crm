@@ -4,3 +4,15 @@ node_modules/
 tsconfig.tsbuildinfo
 .env
 .env.local
+
+# Per-developer AI harness config. Regenerable with `npx impeccable install`;
+# four toolchains of generated skill files help nobody who clones this.
+# Note: .impeccable/ is NOT ignored — that's shared project design context.
+.claude/
+.codex/
+.cursor/
+.grok/
+
+# ...except this one: per-session scratch cache keyed by session id and
+# absolute local paths. Churns on every edit and means nothing to anyone else.
+.impeccable/hook.cache.json
