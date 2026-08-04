@@ -1,7 +1,7 @@
 # Momentum Landscaping
 
 One codebase for the public site surface, customer portal, and operations CRM for
-Momentum Landscaping (northern Utah County), plus Wayne — the single AI agent that
+Momentum Landscaping (Salt Lake County), plus Wayne — the single AI agent that
 handles lead conversations, scheduling, and operations over SMS.
 
 ## Stack
@@ -28,3 +28,7 @@ See `.env.example`. All secrets live in the Corpus HQ credentials registry.
 - All outbound SMS goes through `lib/sms.ts` (opt-out + quiet hours enforced once)
 - Wayne never invents prices/dates; bookings only via `book_job`
 - Test rows are `source='test'` and excluded from nudges/stats
+- Service area is the `zones` table (`active = true`) and nothing else. Any
+  customer-facing city list comes from `activeServiceCities()` in `lib/zones.ts`
+  — never hand-write one. County-level prose ("Salt Lake County") is the only
+  allowed exception, because zones carries no county column.

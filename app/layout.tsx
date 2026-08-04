@@ -7,9 +7,12 @@ const dmSans = DM_Sans({ subsets: ["latin"], weight: ["400", "500", "700"], vari
 const instrument = Instrument_Sans({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-body", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Momentum Landscaping | Lawn Care in Northern Utah County",
+  // County-level on purpose: enumerating cities here would be a fifth copy of
+  // the service area to keep in sync, and metadata on the root layout can't
+  // read the zones table without a DB round trip on every request in the app.
+  title: "Momentum Landscaping | Lawn Care in Salt Lake County",
   description:
-    "Weekly and biweekly lawn maintenance, aeration, and cleanups across Lehi, Saratoga Springs, Eagle Mountain, and surrounding cities.",
+    "Weekly and biweekly lawn maintenance, aeration, and cleanups across Salt Lake County, Utah.",
   other: {
     "facebook-domain-verification": process.env.NEXT_PUBLIC_META_DOMAIN_VERIFICATION ?? "",
   },

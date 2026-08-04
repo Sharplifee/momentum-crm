@@ -1,6 +1,28 @@
 import { supabaseAdmin } from "@/lib/supabase/admin";
 
 /**
+ * Every city/community we currently serve, read from the zones table.
+ *
+ * This is the ONLY place customer-facing surfaces should get a service-area
+ * list. Hand-written lists go stale silently and cost real money: when Utah
+ * County was deactivated on 2026-08-01, five separate hardcoded lists kept
+ * advertising it and kept generating leads nobody could fulfill. Deactivating
+ * a zone must be enough to take it off the site, the quote form, and Wayne.
+ *
+ * Deduped (cities span zones) and alphabetical — zone order is an internal
+ * routing concern and means nothing to a homeowner picking their city.
+ */
+export async function activeServiceCities(): Promise<string[]> {
+  const db = supabaseAdmin();
+  const { data: zones } = await db.from("zones").select("cities").eq("active", true).order("id");
+  const seen = new Set<string>();
+  for (const z of zones ?? []) {
+    for (const c of (z.cities as string[]) ?? []) seen.add(c);
+  }
+  return [...seen].sort((a, b) => a.localeCompare(b));
+}
+
+/**
  * Resolve a zone from explicit city and/or free-text address (punch list 1.1).
  * Case-insensitive match against zones.cities; multi-zone cities take the
  * lowest zone id; unresolvable falls back to system_config.default_zone.
