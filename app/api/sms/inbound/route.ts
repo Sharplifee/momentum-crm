@@ -159,7 +159,7 @@ export async function POST(req: NextRequest) {
     await sendSms({
       to: phone,
       message:
-        "Momentum Landscaping: lawn care in northern Utah County. Msg&data rates may apply. Reply STOP to opt out. Questions: momentumlandscapingut.com",
+        "Momentum Landscaping: lawn care in Salt Lake County. Msg&data rates may apply. Reply STOP to opt out. Questions: momentumlandscapingut.com",
       thread_id: thread.id,
       sender: "system",
       bypassQuietHours: true,

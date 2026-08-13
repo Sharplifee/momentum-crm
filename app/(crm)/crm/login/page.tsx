@@ -72,7 +72,7 @@ export default function LoginPage() {
         </form>
 
         <p className="mt-7 text-center text-[11px] text-[color:var(--body)]/45">
-          © {new Date().getFullYear()} Momentum Landscaping LLC · Salt Lake & Utah County
+          © {new Date().getFullYear()} Momentum Landscaping LLC · Salt Lake County
         </p>
       </div>
     </main>

@@ -4,7 +4,7 @@ export default function LegalLayout({ children }: { children: React.ReactNode })
       {children}
       <hr className="my-6" />
       <p className="text-sm text-stone-500">
-        Momentum Landscaping · Northern Utah County, UT · momentumlandscapingut.com
+        Momentum Landscaping · Salt Lake County, UT · momentumlandscapingut.com
       </p>
     </main>
   );
